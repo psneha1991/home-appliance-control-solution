@@ -24,35 +24,60 @@ This is a simple Spring Boot application written in Java 11 to control smart hom
 1. Clone the repository:
 
    git clone https://github.com/psneha1991/home-appliance-control-solution.git
+
    cd home-appliance-control-solution
 
+
 2. Build and Run the Application
+
    ./mvnw spring-boot:run
+
+
 3. Run the tests
+
    ./mvnw test
 
-4. REST API to control the appliances.
 
+4. REST API to control the appliances.
 - Turn Light ON/OFF
+
   curl -X POST http://localhost:8080/api/appliances/light/on
+
 - Fan turn ON/OFF
+
   curl -X POST http://localhost:8080/api/appliances/fan/on
+
   curl -X POST http://localhost:8080/api/appliances/fan/off
+
   - Fan speed adjustment
+   
     curl -X POST http://localhost:8080/api/appliances/fan/speed/2
+  
     curl -X POST http://localhost:8080/api/appliances/fan/speed/1
+  
 - AC turn ON/OFF
+
   curl -X POST "http://localhost:8080/api/appliances/ac/mode?mode=off"
+
   curl -X POST "http://localhost:8080/api/appliances/ac/mode?mode=on"
+
   curl -X POST "http://localhost:8080/api/appliances/ac/mode?mode=cool"
+
 - Status of various appliances
+
   curl -X POST http://localhost:8080/api/appliances/light/status
+
   curl -X POST http://localhost:8080/api/appliances/fan/status
+
   curl -X POST http://localhost:8080/api/appliances/ac/status
+
 - To check the scheduler
+
   Quick testing done by modifying the below line:
+
   @Scheduled(cron = "*/10 * * * * *") // Every 10 seconds
-  In the test case - created TurnOffAll.
+
+  In the test case - created TurnOffAll()
 
 
 
