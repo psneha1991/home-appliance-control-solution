@@ -3,6 +3,7 @@ package com.example.smarthome.service;
 import com.example.smarthome.model.AirConditioner;
 import com.example.smarthome.model.Appliance;
 import com.example.smarthome.model.Fan;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -69,6 +70,12 @@ public class ApplianceService {
         } else {
             throw new IllegalArgumentException("Air Conditioner appliance not found");
         }
+    }
+
+    @Scheduled(cron = "0 0 1 1 1 *") // At 1:00 AM on January 1st every year
+    public void scheduledSystemUpdate() {
+        System.out.println("Running scheduled system update: turning off all devices.");
+        turnOffAll();
     }
 }
 
